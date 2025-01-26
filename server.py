@@ -1,11 +1,13 @@
 from http.server import HTTPServer, BaseHTTPRequestHandler
 
+INDEX_LOCATION = "html"
 
 class server(BaseHTTPRequestHandler):
 
     def do_GET(self):
         if self.path == '/':
-            self.path = '/index.html'
+            self.path = f"/{INDEX_LOCATION}/index.html"
+            print(self.path)
         try:
             file_to_open = open(self.path[1:]).read()
             self.send_response(200)
