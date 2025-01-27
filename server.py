@@ -11,6 +11,9 @@ HOST_LOCATION = ("localhost", 8080)
 
 class MyServer(BaseHTTPRequestHandler):
 
+    def log_message(self, format, *args):
+        pass
+
     def do_GET(self):
         if self.path == '/':
             self.path = f"/{INDEX_LOCATION}/index.html"

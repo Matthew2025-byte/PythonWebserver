@@ -1,14 +1,11 @@
 <!DOCTYPE html>
 
 <html>
-    <head>
-        <title>Webserver</title>
-        <link rel="stylesheet" href="/css/style.css">
-    </head>
+    <button onclick=OpenPopup()>New Order</button>
+    <script>
+        function OpenPopup() {
+            window.open("/html/OrderForm.html", "popupWindow", "width=400, height=400");
+        }
 
-    <form method="post">
-        Name: <input name="name">
-        <br><button type="submit">Submit</button>
-
-    </form>
+    </script>
 </html>
