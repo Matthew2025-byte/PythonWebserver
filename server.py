@@ -1,7 +1,7 @@
 from http.server import HTTPServer, BaseHTTPRequestHandler
 
 INDEX_LOCATION = "html"
-HOST_LOCATION = ("localhost", 8080)
+HOST_LOCATION = ("", 8080)
 
 # WARNING: BaseHTTPRequestHandler does not have any security
 # This allows malicious actors to access files on your computer
@@ -27,4 +27,11 @@ class MyServer(BaseHTTPRequestHandler):
 
 
 Server = HTTPServer(HOST_LOCATION, MyServer)
-Server.serve_forever()
+
+try:
+    print("Server Started")
+    print(Server.server_address)
+    Server.serve_forever()
+except KeyboardInterrupt:
+    Server.shutdown()
+    print("Server Shutdown")
