@@ -1,8 +1,15 @@
 from http.server import HTTPServer, BaseHTTPRequestHandler
 
 INDEX_LOCATION = "html"
+HOST_LOCATION = ("localhost", 8080)
 
-class server(BaseHTTPRequestHandler):
+# WARNING: BaseHTTPRequestHandler does not have any security
+# This allows malicious actors to access files on your computer
+# without your knowledge.
+
+# USE AT YOUR OWN RISK
+
+class MyServer(BaseHTTPRequestHandler):
 
     def do_GET(self):
         if self.path == '/':
@@ -17,5 +24,7 @@ class server(BaseHTTPRequestHandler):
         self.end_headers()
         self.wfile.write(bytes(file_to_open, 'utf-8'))
 
-httpd = HTTPServer(('localhost', 8080), server)
-httpd.serve_forever()
+
+
+Server = HTTPServer(HOST_LOCATION, MyServer)
+Server.serve_forever()
